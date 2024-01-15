@@ -3,56 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GrapplePointsTrigger : MonoBehaviour
-{ 
-    [SerializeField]
-    private float detectionRadius = 10f;
-    public GameObject teleportMarker;
-    public float teleportMargin = 1.0f;
-    public LayerMask layerMask;
+{
+    [SerializeField] private float _radius;
+    [SerializeField] private LayerMask _layerMask;
 
     private void Update()
     {
-        CheckClosestGround();
+        CheckOverlap();
     }
 
-    void CheckClosestGround()
+    private void CheckOverlap()
     {
-        float closestDistance = float.MaxValue;
-        Transform newClosestGround = null;
-
-        var colliders = Physics.OverlapSphere(transform.position, detectionRadius, layerMask);
-        foreach (var collider in colliders)
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius, _layerMask, QueryTriggerInteraction.Collide);
+        foreach (var hitCollider in hitColliders)
         {
-            float colliderDistance = Vector3.Distance(collider.transform.position, transform.position);
-            if (closestDistance > colliderDistance)
+            if (hitCollider.CompareTag("Batman"))
             {
-                closestDistance = colliderDistance;
-                newClosestGround = collider.gameObject.transform;
+                Transform childWithMesh = hitCollider.transform.GetChild(0);
+                Transform childWithCanvas = hitCollider.transform.GetChild(1);
+
+                if (childWithMesh != null)
+                {
+                    MeshRenderer meshRenderer = childWithMesh.GetComponent<MeshRenderer>();
+
+                    if (meshRenderer != null && !meshRenderer.enabled)
+                    {
+                        meshRenderer.enabled = true;
+                    }
+                }
+
+                if (childWithCanvas != null)
+                {
+                    Canvas canvas = childWithCanvas.GetComponent<Canvas>();
+
+                    if (canvas != null && !canvas.enabled)
+                    {
+                        canvas.enabled = true;
+                    }
+                }
             }
         }
-
-    
-        if (newClosestGround != null)
-        {
-            MeshRenderer meshRenderer = newClosestGround.GetComponentInChildren<MeshRenderer>();
-            Canvas canvas = newClosestGround.GetComponentInChildren<Canvas>();
-
-            if (meshRenderer != null)
-            {
-                meshRenderer.enabled = true;
-            }
-
-            if (canvas != null)
-            {
-                canvas.enabled = true;
-            }
-        }
-
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        Gizmos.DrawWireSphere(transform.position, _radius);
     }
+
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6705218709303379186}
   - component: {fileID: 7610986570675195020}
   - component: {fileID: 574413989037826956}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,13 +146,13 @@ GameObject:
   - component: {fileID: 4460213313913041898}
   - component: {fileID: 1723981592410952424}
   - component: {fileID: 6872765474964081875}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &252274426099095370
 Transform:
   m_ObjectHideFlags: 0
@@ -183,7 +183,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2206317186100760528}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -249,9 +249,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8274203239568086853}
   - component: {fileID: 4003976506819076769}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GraplingSpot
-  m_TagString: Untagged
+  m_TagString: Batman
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,13 +306,13 @@ GameObject:
   - component: {fileID: 2751475868009553442}
   - component: {fileID: 8642640877197361954}
   - component: {fileID: 6197396369832382007}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PressE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4103532295718867651
 RectTransform:
   m_ObjectHideFlags: 0
@@ -340,7 +340,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7511984236464469439}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
